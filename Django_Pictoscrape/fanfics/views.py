@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from fanfics.models import FanFic
 from fanfics.forms import CreateNewForm, CreateURLForm
+import my_immortal_keyword_finder
 
 def index(request):
     latest_fanfic_list = FanFic.objects.all().order_by('-pub_date')[:5]
@@ -13,12 +14,11 @@ def createNew(request):
 		form = CreateNewForm(request.POST)
 		if form.is_valid():
 			new_fanfic = form.save()
-			
-			'''
-			Alyssa's code here perhaps 
-			'''
-			'''WANT TO REDIRECT TO DETAILS PAGE'''
-			return HttpResponseRedirect('/fanfics/' + str(new_fanfic.id)) # Redirect after POST
+			#alyssa's code -- getting keywords
+			kwlist = my_immortal_keyword_finder.getwords(new_fanfic.text)
+			for kw in kwlist:
+				new_fanfic.keyword_set.create(key_word=kw)
+			return HttpResponseRedirect('/fanfics/' + str(new_fanfic.id)) # Redirect to details page after POST
 	else:
 		form = CreateNewForm() # An unbound form
 
