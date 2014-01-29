@@ -1,6 +1,13 @@
-<h1>{{ fanfic.title }}</h1>
+<h1 style="text-align:center">{{ fanfic.title }}</h1>
+<hr>
+<div style="width:35%; margin:0 auto">
+<div style="float:left">
 <ul>
 {% for choice in fanfic.keyword_set.all %}
     <li>{{ keyword.key_word }}</li>
 {% endfor %}
 </ul>
+</div>
+<div style="float: left; background-color:red; height:500px;width:300px; margin-left:60px">
+</div>
+</div>
