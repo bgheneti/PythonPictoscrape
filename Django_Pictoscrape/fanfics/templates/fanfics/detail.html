@@ -1,0 +1,6 @@
+<h1>{{ fanfic.title }}</h1>
+<ul>
+{% for choice in fanfic.keyword_set.all %}
+    <li>{{ keyword.key_word }}</li>
+{% endfor %}
+</ul>
