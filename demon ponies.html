@@ -1,0 +1,68 @@
+<head>
+	<link href = "bootstrap.min.css" rel = "stylesheet" media = "screen">
+	<style media="screen" type="text/css">
+
+		#parentDiv
+		{
+		    position:relative;
+		    border-style:solid;
+		    border-color: pink;
+		    min-height:100%;
+		    text-align: left-align;
+		}
+		#content
+		{
+			top:10%;
+			border-style:solid;
+			border-color: green;
+			text-align: left-align;
+		}
+		#text
+		{
+		    width:60.5%;
+		    height: 82%;
+		    border-color: blue;
+		    border-style:solid;
+		}
+		#sidebar
+		{   
+		    position:absolute;
+		    border-color: yellow;
+		    top:0px;
+		    right:0px;
+		    bottom:0px;
+		    width:39%;
+		    background-color:gray;
+
+		}
+		#section
+		{
+			height: 82%
+		}
+
+	</style>
+</head>
+<div class= "jumbotron">
+	<div class="container">
+	<h1 class = "text-left"> {{fanfic.title}}</h1>
+	<h3 class = "text-left"> {{fanfic.author}}</h3>
+	</div>
+	
+  	</div>
+<div class = "row">
+	<div class = "col-md-5">
+		<p class = "text-center">fanfiction text</p>
+	</div>
+	
+	
+	<div class = "col-md-5">
+		<p class = "text-center">pics go here!</p>
+	</div>
+</div>
+
+
+<ul>
+{% for choice in fanfic.keyword_set.all %}
+    <li>{{ keyword.key_word }}</li>
+{% endfor %}
+</ul>
