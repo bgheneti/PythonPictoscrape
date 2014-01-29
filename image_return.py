@@ -26,11 +26,14 @@ def urlFind(keyword):
 def googlePrep(keyword):
 	
 	queryURL=urlFind(keyword)
-	request = urllib2.Request(queryURL, None, {'Referer': 'http://www.google.com'})
-	response = urllib2.urlopen(request)
-	results = simplejson.load(response)
-	for result in results['responseData']['results']:
-		return result['unescapedUrl']
+	try:
+		request = urllib2.Request(queryURL, None, {'Referer': 'http://www.google.com'})
+		response = urllib2.urlopen(request)
+		results = simplejson.load(response)
+		for result in results['responseData']['results']:
+			return result['unescapedUrl']
+	except:
+		pass
 
 #takes array of keywords and imagerage, sends request and receives response, returns Image URL
 
