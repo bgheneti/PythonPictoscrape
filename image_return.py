@@ -29,9 +29,11 @@ def googlePrep(keyword):
 	request = urllib2.Request(queryURL, None, {'Referer': 'http://www.google.com'})
 	response = urllib2.urlopen(request)
 	results = simplejson.load(response)
-	return result['responseData']['results']['unescapedUrl']);
+	print results['responseData']['cursor']
+	for result in results['responseData']['results']:
+		return result['unescapedUrl']
 
 #takes array of keywords and imagerage, sends request and receives response, returns Image URL
 
 
-print googlePrep(array,(1,3,1))
+print googlePrep("apple")
