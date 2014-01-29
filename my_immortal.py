@@ -12,8 +12,8 @@ import cStringIO
 def getwords(mystr):
     mystr = re.sub('\\xe2\x80\x99', "'", mystr)
     mystr = re.sub('\\xe2\x80\x9d', ',', mystr)
+    print mystr
     names = re.findall('[A-Z].*? [a-z]', mystr)
-    
     proper = []
     for i in names:
         trail = re.compile(' [a-z]|\(|\:|')
@@ -57,13 +57,15 @@ def getwords(mystr):
     longwords = re.findall(" [a-z]{7,} ", mystr)
     while l>len(nope)-10:
         if nope[l] != "STOP":
-            google.append((nope[l], longwords[random.randrange(len(longwords))]))
+            google.append(nope[l])
+            google.append(longwords[random.randrange(len(longwords))])
         else:
             pass
         l = l-1
     verbs = re.findall("[A-Z][a-z]* [a-z]*ed ", mystr)
     for v in verbs:
-        google.append((re.findall("[A-Z][a-z]* ", v)[0], re.findall("[a-z]*ed", v)[0]))   
+        google.append(re.findall("[A-Z][a-z]* ", v)[0])
+        google.append(re.findall("[a-z]*ed", v)[0]) 
     print google 
     return google
     
