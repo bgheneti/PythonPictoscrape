@@ -29,7 +29,6 @@ def googlePrep(keyword):
 	request = urllib2.Request(queryURL, None, {'Referer': 'http://www.google.com'})
 	response = urllib2.urlopen(request)
 	results = simplejson.load(response)
-	print results['responseData']['cursor']
 	for result in results['responseData']['results']:
 		return result['unescapedUrl']
 
