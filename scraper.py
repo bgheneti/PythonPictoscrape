@@ -1,53 +1,37 @@
-from urllib import urlopen
+from lxml import html
+import requests
 from rfc3987 import parse
-from lxml import etree
-from xml.etree.ElementTree import ElementTree
 
 
-
-def userInput():
-
-	website=raw_input("website?")
+def webCheck(website):
 
 	try:
 		print parse(website, rule='IRI')
-		return website
-	
+		return True	
 	except:
 		return False
 
 
 def urlRead(website):
-	websiteRead=urlopen(website).read()
-	print websiteRead
+	page = requests.get(website)
+	tree=html.fromstring(page.text)
+	subject = tree.xpath('//dd[@class="fandom tags"]/ul/*[1]/a[@class="tag"]/text()')
+	summary = tree.xpath('//blockquote[@class="userstuff"]/p/text()')
+	storyOrig = tree.xpath('//div[@class="userstuff"]/p/text()')
+	story=[]
+	for i in xrange(len(storyOrig)):
+		part=storyOrig[i].strip().encode('ascii', 'ignore')
+		if part!='' and part!='-':
+			story.append(part)
+	story = " ".join(story);
+	return [subject,summary,story]
 
+def scrape(website):
 
-	XHTML_NAMESPACE = website
-	XHTML = "{%s}" % XHTML_NAMESPACE
-	NSMAP = {None : XHTML_NAMESPACE} # the default namespace (no prefix)
-
-	xhtml = etree.Element(XHTML + "html", nsmap=NSMAP) # lxml only!
-
-	body.text = "Hello World"
-
-
-	tree=etree.HTML(websiteRead)
-
-	topic = tree.xpath( "//dd[@class='fandom tags']")
-
-	wow.=etree
-
-
-
-	print topic
-
-def scrape():
-	website=userInput()
-	if website==False:
+	if webCheck(website)==False:
 		print "website does not exist"
-		scrape()
-		return True
-	urlRead(website)
+		return False
+	return urlRead(website)
 
 
-urlRead("http://archiveofourown.org/works/1158492")
+print scrape('http://archiveofourown.org/works/1158492')
