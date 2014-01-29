@@ -1,7 +1,55 @@
+<<<<<<< HEAD
 <h1 style="text-align:center">{{ fanfic.title }}</h1>
 <hr>
 <div style="width:35%; margin:0 auto">
 <div style="float:left">
+=======
+<head>
+	<style media="screen" type="text/css">
+
+		#parentDiv
+		{
+		    position:relative;
+		    border-style:solid;
+		    min-height:100%;
+		    text-align: center;
+		}
+		#content
+		{
+			top:10%;
+			border-style:solid;
+		}
+		#text
+		{
+		    width:60%;
+		    height: 80%;
+		    border-style:solid;
+		}
+		#sidebar
+		{   
+		    position:absolute;
+		    top:0px;
+		    right:0px;
+		    bottom:0px;
+		    width:39%;
+		    background-color:gray;
+
+		}
+
+	</style>
+</head>
+
+<div id="parentDiv">
+	<h1>{{ fanfic.title }}</h1>
+	<p>{{fanfic.author}}</p>
+	<div id="content">
+		<div id="text"><p>{{fanfic.text}}</p></div>
+  		<div id="sidebar">Pictures will go here!</div>
+	</div>
+  	</div>
+
+
+>>>>>>> 9c4710b3ff1d701160aa84cd5f337d0685e8e7e6
 <ul>
 {% for choice in fanfic.keyword_set.all %}
     <li>{{ keyword.key_word }}</li>
