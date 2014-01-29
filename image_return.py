@@ -27,6 +27,7 @@ def googlePrep(keyword):
 	
 	queryURL=urlFind(keyword)
 	try:
+		keyword=str(keyword)
 		request = urllib2.Request(queryURL, None, {'Referer': 'http://www.google.com'})
 		response = urllib2.urlopen(request)
 		results = simplejson.load(response)
