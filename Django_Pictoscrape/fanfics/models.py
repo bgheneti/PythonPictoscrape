@@ -3,6 +3,7 @@ from django.utils import timezone
 
 class FanFic(models.Model):
 	title = models.CharField(max_length=200)
+	#author = models.CharField(max_length=200)
 	text = models.TextField()
 	pub_date = models.DateTimeField('date published', default=timezone.now())
 	def __unicode__(self):

@@ -13,6 +13,11 @@ def createNew(request):
 		form = CreateNewForm(request.POST)
 		if form.is_valid():
 			new_fanfic = form.save()
+			
+			'''
+			Alyssa's code here perhaps 
+			'''
+			'''WANT TO REDIRECT TO DETAILS PAGE'''
 			return HttpResponseRedirect('/fanfics/') # Redirect after POST
 	else:
 		form = CreateNewForm() # An unbound form

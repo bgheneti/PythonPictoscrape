@@ -1,0 +1,20 @@
+#parentDiv
+{
+    position:relative;
+    border-style:solid;
+    min-height:700px;
+}
+#content
+{
+    width:300px;
+    border-style:solid;
+}
+#sidebar
+{   
+    position:absolute;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    width:100px;
+    background-color:black;
+}
