@@ -44,8 +44,18 @@
         <p>{{fanfic.author}}</p>
         <div id="content">
                 <div id="text"><p>{{fanfic.text}}</p></div>
-                  <div id="sidebar">Pictures will go here!</div>
+                  <div id="sidebar">Pictures will go here!
+                        <ul>
+                        {% for kw in fanfic.keyword_set.all %}
+                            <img src="{{ kw.image_url }}">
+                            <li>{{ kw.key_word }}</li>
+                        {% endfor %}
+                        </ul>
+                  </div>
         </div>
+        <img src = {{ val from 
+            python script 
+        }}>
  </div>
 
 
