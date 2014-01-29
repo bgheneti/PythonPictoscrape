@@ -1,0 +1,13 @@
+<h1>"Pic" your FanFic</h1>
+
+<a href="{% url 'fanfics:createNew' %}">CREATE NEW</a>
+
+{% if latest_fanfic_list %}
+    <ul>
+    {% for fanfic in latest_fanfic_list %}
+        <li><a href="/fanfics/{{ fanfic.id }}/">{{ fanfic.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No fanfics are available.</p>
+{% endif %}
