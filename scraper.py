@@ -10,7 +10,7 @@ def webCheck(website):
 		return True	
 	except:
 		return False
-
+#checks if website URL exists
 
 def urlRead(website):
 	page = requests.get(website)
@@ -26,6 +26,7 @@ def urlRead(website):
 	story = " ".join(story);
 	return [subject,summary,story]
 
+#takes website URL and scrapes fandom subject, summary and story from html to ascii
 def scrape(website):
 
 	if webCheck(website)==False:
@@ -33,5 +34,6 @@ def scrape(website):
 		return False
 	return urlRead(website)
 
+#takes website URL and returns text array of keywork, summary and story
 
 print scrape('http://archiveofourown.org/works/1158492')

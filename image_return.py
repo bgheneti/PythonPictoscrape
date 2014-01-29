@@ -4,16 +4,6 @@ import socket
 
 
 
-# def imageReturn(array):
-
-
-
-# 	url = ('https://ajax.googleapis.com/ajax/services/search/images?' +
-#        'v=1.0&q=barack%20obama&userip=INSERT-USER-IP')
-
-# 	request = urllib2.Request(url, None, {'Referer': /* Enter the URL of your site here */})
-
-
 
 def queryFind(array):
 	query=""
@@ -22,6 +12,8 @@ def queryFind(array):
 
 	query+=array[len(array)-1]
 	return query
+
+#adds keywords in Google URL encoding
 
 def urlFind(array,imageRange):
 	
@@ -33,7 +25,7 @@ def urlFind(array,imageRange):
 		queryURLS.append(('https://ajax.googleapis.com/ajax/services/search/images?' + 'v=1.0&q='+query+'&userip='+ip+'&start='+imageNum))
 	return queryURLS
 
-	#finding the url to search by query = key1 + %20 + key2 ... and image Number
+#finding the url to search by query = key1 + %20 + key2 ... and image Number
 
 def googlePrep(array,imageRange):
 	
@@ -46,11 +38,7 @@ def googlePrep(array,imageRange):
 		for result in results['responseData']['results']:
 			    imageURLS.append(result['unescapedUrl']);
 	return imageURLS
-
-print urlFind(["a","bb"],(1,3,1));
-print "****************"
-
-array=["apples","bananas"]
+#takes array of keywords and imagerage, sends request and receives response, returns Image URL
 
 
 print googlePrep(array,(1,3,1))
