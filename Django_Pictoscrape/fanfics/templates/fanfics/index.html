@@ -1,7 +1,7 @@
 <h1>"Pic" your FanFic</h1>
 
 <a href="{% url 'fanfics:createNew' %}">CREATE NEW</a>
-
+<a href="{% url 'fanfics:createURL' %}">USE URL</a>
 {% if latest_fanfic_list %}
     <ul>
     {% for fanfic in latest_fanfic_list %}
