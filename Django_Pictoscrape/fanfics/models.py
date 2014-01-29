@@ -18,5 +18,6 @@ class FanFic(models.Model):
 class Keyword(models.Model):
 	story = models.ForeignKey(FanFic)
 	key_word = models.CharField(max_length=200)
+	image_url = models.CharField(max_length=500)
 	def __unicode__(self):
 		return self.key_word

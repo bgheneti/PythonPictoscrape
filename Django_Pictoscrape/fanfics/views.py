@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from fanfics.models import FanFic
 from fanfics.forms import CreateNewForm, CreateURLForm
 import my_immortal_keyword_finder
+import image_return
 
 def index(request):
     latest_fanfic_list = FanFic.objects.all().order_by('-pub_date')[:5]
@@ -17,7 +18,10 @@ def createNew(request):
 			#alyssa's code -- getting keywords
 			kwlist = my_immortal_keyword_finder.getwords(new_fanfic.text)
 			for kw in kwlist:
-				new_fanfic.keyword_set.create(key_word=kw)
+				new_fanfic.keyword_set.create(key_word=kw) #adding new keyword
+
+			#banti's code -- getting image url
+			image_return.googlePrep('''keyword''', (1,3,1))
 			return HttpResponseRedirect('/fanfics/' + str(new_fanfic.id)) # Redirect to details page after POST
 	else:
 		form = CreateNewForm() # An unbound form
@@ -31,7 +35,9 @@ def createURL(request):
 		form = CreateURLForm(request.POST)
 		if form.is_valid():
 			#new_fanfic = form.save(committ=False)
-			
+			# 0 title
+			# 1 summary/notes
+			# 2 chapter
 			'''
 			Banti's code here 
 			'''

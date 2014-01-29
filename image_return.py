@@ -15,29 +15,22 @@ def queryFind(array):
 
 #adds keywords in Google URL encoding
 
-def urlFind(array,imageRange):
+def urlFind(keyword):
 	
-	query=queryFind(array)
 	ip=socket.gethostbyname(socket.gethostname())
-	queryURLS=[]
-	for x in xrange(imageRange[0],imageRange[1],imageRange[2]):
-		imageNum=str(x)
-		queryURLS.append(('https://ajax.googleapis.com/ajax/services/search/images?' + 'v=1.0&q='+query+'&userip='+ip+'&start='+imageNum))
-	return queryURLS
+	queryURL='https://ajax.googleapis.com/ajax/services/search/images?' + 'v=1.0&q='+keyword+'&userip='+ip
+	return queryURL
 
 #finding the url to search by query = key1 + %20 + key2 ... and image Number
 
-def googlePrep(array,imageRange):
+def googlePrep(keyword):
 	
-	queryURLS=urlFind(array,imageRange)
-	imageURLS=[];
-	for queryURL in queryURLS:
-		request = urllib2.Request(queryURL, None, {'Referer': 'http://www.google.com'})
-		response = urllib2.urlopen(request)
-		results = simplejson.load(response)
-		for result in results['responseData']['results']:
-			    imageURLS.append(result['unescapedUrl']);
-	return imageURLS
+	queryURL=urlFind(keyword)
+	request = urllib2.Request(queryURL, None, {'Referer': 'http://www.google.com'})
+	response = urllib2.urlopen(request)
+	results = simplejson.load(response)
+	return result['responseData']['results']['unescapedUrl']);
+
 #takes array of keywords and imagerage, sends request and receives response, returns Image URL
 
 
