@@ -12,7 +12,6 @@ import cStringIO
 def getwords(mystr):
     mystr = re.sub('\\xe2\x80\x99', "'", mystr)
     mystr = re.sub('\\xe2\x80\x9d', ',', mystr)
-    print mystr
     names = re.findall('[A-Z].*? [a-z]', mystr)
     proper = []
     for i in names:
@@ -65,8 +64,8 @@ def getwords(mystr):
     verbs = re.findall("[A-Z][a-z]* [a-z]*ed ", mystr)
     for v in verbs:
         google.append(re.findall("[A-Z][a-z]* ", v)[0])
-        google.append(re.findall("[a-z]*ed", v)[0]) 
-    print google 
+        google.append(re.findall("[a-z]*ed", v)[0])
+    print google
     return google
     
 
