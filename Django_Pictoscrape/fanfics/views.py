@@ -40,6 +40,7 @@ def createURL(request):
 			new_fanfic = form.save(commit=False)
 			#banti's code -- scraping from url
 			d = scraper.scrape(form.cleaned_data['url'])
+			print 'D title: ' + d['title']
 			new_fanfic.title = d['title']
 			new_fanfic.author = d['author']
 			new_fanfic.text = d['text']
@@ -53,8 +54,7 @@ def createURL(request):
 					new_fanfic.keyword_set.create(key_word=kw, image_url=str(image_return.googlePrep(kw)))
 				except:
 					print kw + "is fucked"
-			'''WANT TO REDIRECT TO DETAILS PAGE'''
-			return HttpResponseRedirect('/fanfics/') # Redirect after POST
+			return HttpResponseRedirect('/fanfics/'+ str(new_fanfic.id)) # Redirect after POST
 	else:
 		form = CreateURLForm() # An unbound form
 

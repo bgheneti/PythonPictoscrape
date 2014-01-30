@@ -16,13 +16,13 @@ def urlRead(website):
         page = requests.get(website)
         tree=html.fromstring(page.text)
         authority=parse(website, rule='IRI')['authority']
-        print tree
+        #print tree
 
         if authority=='www.fanfiction.net':
                 subject = tree.xpath('//span[@class="lc-left"]/*[3]/text()')
                 storyOrig = tree.xpath('//div[@class="storytext xcontrast_txt nocopy"]/p/text()')
                 author = tree.xpath('//div[@id="profile_top"]/*[5]/text()')
-                print author
+                #print author
                 title = tree.xpath('//div[@id="profile_top"]/b/text()')
                 story=[]
                 summary=None
@@ -50,7 +50,7 @@ def urlRead(website):
                         page=requests.get(website+"?view_adult=true")
                         tree=html.fromstring(page.text)
                         subject = tree.xpath('//dd[@class="fandom tags"]/ul/*[1]/a[@class="tag"]/text()')
-                print subject
+                #print subject
                 summaryOrig = tree.xpath('//blockquote[@class="userstuff"]/p/text()')
                 storyOrig = tree.xpath('//div[@role="article"]/p/text()')
                 author = tree.xpath('//a[@class="login author"]/text()')
@@ -97,4 +97,4 @@ def scrape(website):
 
 #takes website URL and returns text array of keywork, summary and story
 
-print scrape('https://www.fanfiction.net/s/8099318/1/Difficult-Choices')
+#print scrape('https://www.fanfiction.net/s/8099318/1/Difficult-Choices')
