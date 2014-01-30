@@ -44,7 +44,7 @@ def urlRead(website):
 
                 return dictionary
 
-        if authority=='archiveofourown.net':
+        if authority=='archiveofourown.org':
                 subject = tree.xpath('//dd[@class="fandom tags"]/ul/*[1]/a[@class="tag"]/text()')
                 if subject==[]:
                         page=requests.get(website+"?view_adult=true")
@@ -97,4 +97,4 @@ def scrape(website):
 
 #takes website URL and returns text array of keywork, summary and story
 
-#print scrape('https://www.fanfiction.net/s/8099318/1/Difficult-Choices')
+# print scrape('http://archiveofourown.org/works/1145750/chapters/2320181')
