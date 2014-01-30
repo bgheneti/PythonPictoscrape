@@ -129,7 +129,10 @@
         }
         body{
         background-color: pink;
-        color: yellow;
+        color: purple;
+        }
+        h5{
+        color: white;
         }
         
         
@@ -142,6 +145,9 @@
     <h1 class = "text-left"> {{fanfic.title}}</h1>
     <h2 class = "text-left"> {{fanfic.author}}</h2>
     <h3 class = "text-left"> a story from the FANFIC.FANDOM fandom</h3>
+    <h5 class = "text-left"> illustrations made with love by birdy, asmithh, and bgheneti</h4>
+    <p><a class="btn btn-primary btn-lg" role="button">Illustrate again!</a></p>
+    <img src="http://ladygeekgirl.files.wordpress.com/2012/01/funny-faces-d-lord-of-the-rings-25098153-1031-5192.jpg" class="img-circle">
     </div>
     
     </div>
@@ -155,12 +161,12 @@
         
         <div class = "col-md-6">
             <p class = "text-center">
-                <ul>
-                    {% for kw in fanfic.keyword_set.all %}
-                        <img src="{{ kw.image_url }}">
-                        <li>{{ kw.key_word }}</li>
-                    {% endfor %}
-                </ul>
+            <ul>
+                {% for kw in fanfic.keyword_set.all %}
+                    <img src="{{ kw.image_url }}">
+                    <li>{{ kw.key_word }}</li>
+                {% endfor %}
+            </ul>
             </p>
         </div>
     </div>

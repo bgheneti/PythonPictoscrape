@@ -48,7 +48,9 @@ def createURL(request):
 			#alyssa's code -- getting keywords
 			kwlist = my_immortal_keyword_finder.getwords(new_fanfic.text)
 			for kw in kwlist:
-				kw.strip()
+				print kw
+				kw = kw.strip()
+				print kw 
 				#banti's code -- getting image urls 
 				try:
 					new_fanfic.keyword_set.create(key_word=kw, image_url=str(image_return.googlePrep(kw)))
