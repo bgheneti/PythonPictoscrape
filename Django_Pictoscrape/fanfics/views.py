@@ -18,9 +18,12 @@ def createNew(request):
 			#alyssa's code -- getting keywords
 			kwlist = my_immortal_keyword_finder.getwords(new_fanfic.text)
 			for kw in kwlist:
+				kw.strip()
 				#banti's code -- getting image urls 
-				new_fanfic.keyword_set.create(key_word=kw, image_url=image_return.googlePrep(kw))
-
+				try:
+					new_fanfic.keyword_set.create(key_word=kw, image_url=str(image_return.googlePrep(kw)))
+				except:
+					print kw + "is fucked"
 			return HttpResponseRedirect('/fanfics/' + str(new_fanfic.id)) # Redirect to details page after POST
 	else:
 		form = CreateNewForm() # An unbound form
