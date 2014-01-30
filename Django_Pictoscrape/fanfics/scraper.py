@@ -40,7 +40,7 @@ def urlRead(website):
 
                 story = " ".join(story)
 
-                dictionary = {'subject':subject,'title':title,'author':author,'summary':summary,'text':story}
+                dictionary = {'fandom':subject,'title':title,'author':author,'summary':summary,'text':story}
 
                 return dictionary
 
@@ -76,7 +76,7 @@ def urlRead(website):
                 story = " ".join(story)
                 summary = " ".join(summary)
 
-                dictionary = {'subject':subject,'title':title,'author':author,'summary':summary,'text':story}
+                dictionary = {'fandom':subject,'title':title,'author':author,'summary':summary,'text':story}
 
                 return dictionary
 
