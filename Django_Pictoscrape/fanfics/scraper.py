@@ -87,10 +87,13 @@ def urlRead(website):
 #takes website URL and scrapes fandom subject, summary and story from html to ascii
 def scrape(website):
 
-        if webCheck(website)==False:
-                print "website does not exist"
+        # if webCheck(website)==False:
+        #         print "website does not exist"
+        #         return False
+        try:
+                return urlRead(website)
+        except:
                 return False
-        return urlRead(website)
 
 #takes website URL and returns text array of keywork, summary and story
 
