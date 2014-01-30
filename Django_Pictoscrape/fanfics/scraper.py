@@ -76,7 +76,7 @@ def urlRead(website):
                 story = " ".join(story)
                 summary = " ".join(summary)
 
-                dictionary = {'subject':subject,'title':title,'author':author,'summary':summary,'story':story}
+                dictionary = {'subject':subject,'title':title,'author':author,'summary':summary,'text':story}
 
                 return dictionary
 

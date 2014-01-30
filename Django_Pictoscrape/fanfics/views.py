@@ -4,6 +4,7 @@ from fanfics.models import FanFic
 from fanfics.forms import CreateNewForm, CreateURLForm
 import my_immortal_keyword_finder
 import image_return
+import scraper
 
 def index(request):
     latest_fanfic_list = FanFic.objects.all().order_by('-pub_date')[:5]
@@ -36,13 +37,22 @@ def createURL(request):
 	if request.method == 'POST': 
 		form = CreateURLForm(request.POST)
 		if form.is_valid():
-			#new_fanfic = form.save(committ=False)
-			# 0 title
-			# 1 summary/notes
-			# 2 chapter
-			'''
-			Banti's code here 
-			'''
+			new_fanfic = form.save(commit=False)
+			#banti's code -- scraping from url
+			d = scraper.scrape(form.cleaned_data['url'])
+			new_fanfic.title = d['title']
+			new_fanfic.author = d['author']
+			new_fanfic.text = d['text']
+			new_fanfic.save()
+			#alyssa's code -- getting keywords
+			kwlist = my_immortal_keyword_finder.getwords(new_fanfic.text)
+			for kw in kwlist:
+				kw.strip()
+				#banti's code -- getting image urls 
+				try:
+					new_fanfic.keyword_set.create(key_word=kw, image_url=str(image_return.googlePrep(kw)))
+				except:
+					print kw + "is fucked"
 			'''WANT TO REDIRECT TO DETAILS PAGE'''
 			return HttpResponseRedirect('/fanfics/') # Redirect after POST
 	else:
