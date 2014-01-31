@@ -98,10 +98,26 @@
 
     background-size: cover;
 }
+
 </style>
-  
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 </head>
 <body>
+
+<script>
+var hash = window.location.href;
+console.log(hash);
+$("#fb-share-button").attr('data-href', hash);
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=805245652826352";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div class= "jumbotron">
     <div class="circular-profile"></div>
     <div class="container">
@@ -110,7 +126,7 @@
     <h3 class = "text-left"> a story from the <strong>{{fanfic.fandom}}</strong> fandom</h3>
     <div class = "navigator">
         <ul>
-        <li><a href="{% url 'fanfics:createNew' %}">copy link</a></li>
+        <div class="fb-share-button" data-href="http://127.0.0.1:8000/fanfics/73/" data-type="button_count"></div> 
         <li><a href="{% url 'fanfics:createURL' %}">make another</a></li>
         <li><a href="{% url 'fanfics:index' %}">go home</a></li>
         </ul>
