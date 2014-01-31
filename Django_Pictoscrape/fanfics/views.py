@@ -19,7 +19,7 @@ def createNew(request):
 			#alyssa's code -- getting keywords
 			kwlist = my_immortal_keyword_finder.getwords(new_fanfic.text)
 			for kw in kwlist:
-				kw.strip()
+				kw = kw.strip()
 				#banti's code -- getting image urls 
 				try:
 					new_fanfic.keyword_set.create(key_word=kw, image_url=str(image_return.googlePrep(kw)))
@@ -40,17 +40,18 @@ def createURL(request):
 			new_fanfic = form.save(commit=False)
 			#banti's code -- scraping from url
 			d = scraper.scrape(form.cleaned_data['url'])
-			print 'D title: ' + d['title']
 			new_fanfic.title = d['title']
 			new_fanfic.author = d['author']
-			new_fanfic.text = d['text']
+			if d['text'] == '':
+				new_fanfic.text = d['summary']
+			else:
+				new_fanfic.text = d['text']
+			print "text of fanfic: " + new_fanfic.text
 			new_fanfic.save()
 			#alyssa's code -- getting keywords
 			kwlist = my_immortal_keyword_finder.getwords(new_fanfic.text)
 			for kw in kwlist:
-				print kw
 				kw = kw.strip()
-				print kw 
 				#banti's code -- getting image urls 
 				try:
 					new_fanfic.keyword_set.create(key_word=kw, image_url=str(image_return.googlePrep(kw)))
