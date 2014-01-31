@@ -7,7 +7,7 @@ import image_return
 import scraper
 
 def index(request):
-    latest_fanfic_list = FanFic.objects.all().order_by('-pub_date')[:5]
+    latest_fanfic_list = FanFic.objects.all().order_by('-pub_date')[:7]
     context = {'latest_fanfic_list': latest_fanfic_list}
     return render(request, 'fanfics/index.html', context)
 
@@ -44,9 +44,17 @@ def createURL(request):
 			new_fanfic.title = d['title']
 			new_fanfic.author = d['author']
 			new_fanfic.text = d['text']
-			new_fanfic.save()
+			new_fanfic.fandom = d['fandom']
 			#alyssa's code -- getting keywords
 			kwlist = my_immortal_keyword_finder.getwords(new_fanfic.text)
+			if(kwlist==[]):
+				new_fanfic.text = d['summary']
+				kwlist = my_immortal_keyword_finder.getwords(new_fanfic.text)
+			try:
+				new_fanfic.profile=str(image_return.googlePrep(d['fandom']))
+			except:
+				print "FUCK the profile picture"
+			new_fanfic.save()
 			for kw in kwlist:
 				print kw
 				kw = kw.strip()

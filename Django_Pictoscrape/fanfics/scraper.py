@@ -96,5 +96,3 @@ def scrape(website):
                 return False
 
 #takes website URL and returns text array of keywork, summary and story
-
-print scrape("http://archiveofourown.org/works/933183")

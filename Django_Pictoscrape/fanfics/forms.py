@@ -4,7 +4,7 @@ from django.forms import ModelForm
 class CreateNewForm(ModelForm):
 	class Meta:
 		model = FanFic
-		exclude = ['pub_date', 'url']
+		exclude = ['pub_date', 'url','fandom']
 
 class CreateURLForm(ModelForm):
 	class Meta:

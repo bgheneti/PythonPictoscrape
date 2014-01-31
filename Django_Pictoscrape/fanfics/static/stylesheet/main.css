@@ -35,6 +35,7 @@
 {
 	background-color: #B23B55;
     padding-bottom:5px;
+    line-height: 1;
 	}
 
 /* 00C7A0 teal green, #8760C2,936AA3 a purple A6C778 pea soup green*/
@@ -66,13 +67,14 @@ color: black;
    
    -webkit-column-count: 3;
    -webkit-column-gap:   20px;
-   -moz-column-count:    5;
+   -moz-column-count:    3;
    -moz-column-gap:      20px;
    column-count:         3;
    column-gap:           20px;
     padding-bottom: 20px;
 
 }
+
 #post-image-container{
     max-width: 50%;
     height:auto;
@@ -142,17 +144,18 @@ div.jumbotron .text-left{
 }
 
 .logo{
-    font-family: Unibody8Pro;
-    font-weight: bold;
+    padding-left:335px;
+    font-size: 70px;
+    color: white;
 }
 
 .latest{
     color: black;
     text-align: left;
-    padding-left: 300px;
+    padding-left: 150px;
 }
 .latest-pics-post a{
-    font-size: 35px;
+    font-size: 30px;
     color:rgb(74, 90, 155);
 }
 
@@ -229,5 +232,36 @@ div.latest-pics{
     background-size:100% 100%;
 
 }
+
+.post-row-front {
+    padding-top: 30px;
+    padding-right: 10px;
+    height: 400px;
+    width: 1100px;
+    float:right;
+
+}
+    .circular-logo{
+    float:left;
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    -webkit-border-radius: 75px;
+    -moz-border-radius: 75px;
+
+    background-repeat:no-repeat;
+    background-position: center;
+    
+    background-size: cover;
+}
+
+    .circular-logo-container{
+    max-width: 150px;
+    height:450px;
+    margin-bottom: 5px;
+    float:right;
+}
+
+
 
 

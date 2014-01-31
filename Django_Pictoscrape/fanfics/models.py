@@ -4,9 +4,11 @@ from django.utils import timezone
 class FanFic(models.Model):
 	title = models.CharField(max_length=200)
 	author = models.CharField(max_length=200)
+	fandom = models.CharField(max_length=200)
+	profile = models.CharField(max_length=300)
 	text = models.TextField()
 	pub_date = models.DateTimeField('date published', default=timezone.now())
-	url = models.CharField(max_length=300)
+	url = models.CharField(max_length=1500)
 	def __unicode__(self):
 		return self.title
 	def was_published_recently(self):

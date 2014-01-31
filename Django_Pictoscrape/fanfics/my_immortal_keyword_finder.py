@@ -55,13 +55,14 @@ def getwords(mystr):
     l = len(nope)-1
     google = []
     longwords = re.findall(" [a-z]{7,} ", mystr)
-    while l>len(nope)-10:
-        if nope[l] != "STOP":
-            google.append(nope[l])
-            google.append(longwords[random.randrange(len(longwords))])
-        else:
-            pass
-        l = l-1
+    if l>-1:
+        while l>len(nope)-10 and l>-1:
+            if nope[l] != "STOP":
+                google.append(nope[l])
+                google.append(longwords[random.randrange(len(longwords))])
+            else:
+                pass
+            l = l-1
     verbs = re.findall("[A-Z][a-z]* [a-z]*ed ", mystr)
     for v in verbs:
         google.append(re.findall("[A-Z][a-z]* ", v)[0])
