@@ -1,13 +1,38 @@
-<h1>"Pic" your FanFic</h1>
+<head>
+{% load staticfiles %}
 
-<a href="{% url 'fanfics:createNew' %}">CREATE NEW</a>
-<a href="{% url 'fanfics:createURL' %}">USE URL</a>
+<link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "stylesheet/main.css" %}">
+</head>
+
+
+</head>
+<div class= "jumbotron">
+    <div class="container">
+    <h1 class = "text-left logo">Pic your FanFic</h1>
+    <h2 class = "text-left">the random fanfic image generator</h2>
+    <div class = "navigator home">
+        <ul>
+        <li><a href="{% url 'fanfics:createURL' %}">scan url</a></li>
+        <li><a href="{% url 'fanfics:createNew' %}">scan text</a></li>
+        </ul>
+    </div>
+    </div>
+ </div>
+<div class="circular1"></div>
+
+<div class = "col-md-5">
+<div class="latest">
+<div class="latest-pics">Latest Pics</div>
 {% if latest_fanfic_list %}
-    <ul>
+
     {% for fanfic in latest_fanfic_list %}
-        <li><a href="/fanfics/{{ fanfic.id }}/">{{ fanfic.title }}</a></li>
+        <div class="latest-pics-post"><a href="/fanfics/{{ fanfic.id }}/">{{ fanfic.title }}</a></div>
     {% endfor %}
-    </ul>
+</div>
+</div>
 {% else %}
     <p>No fanfics are available.</p>
 {% endif %}
+<div class="circular2"></div>
+<div class="circular3"></div>
