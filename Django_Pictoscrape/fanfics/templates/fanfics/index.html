@@ -5,11 +5,10 @@
 <link rel="stylesheet" type="text/css" href="{% static "stylesheet/main.css" %}">
 </head>
 
-
-</head>
 <div class= "jumbotron">
     <div class="container">
-    <h1 class = "text-left logo">Pic your FanFic</h1>
+    <div class="logo">Pic your Fic</div>
+
     <h2 class = "text-left">the random fanfic image generator</h2>
     <div class = "navigator home">
         <ul>
@@ -19,20 +18,28 @@
     </div>
     </div>
  </div>
-<div class="circular1"></div>
 
-<div class = "col-md-5">
+<div class = "col-md-4">
 <div class="latest">
 <div class="latest-pics">Latest Pics</div>
 {% if latest_fanfic_list %}
 
     {% for fanfic in latest_fanfic_list %}
         <div class="latest-pics-post"><a href="/fanfics/{{ fanfic.id }}/">{{ fanfic.title }}</a></div>
+
     {% endfor %}
-</div>
-</div>
 {% else %}
     <p>No fanfics are available.</p>
 {% endif %}
-<div class="circular2"></div>
-<div class="circular3"></div>
+</div>
+</div>
+<div class = "post-row-front">
+	{% for fanfic in latest_fanfic_list %}
+	<div class="circular-logo-container">
+            <div class="circular-logo" style="background-image:url({{fanfic.keyword_set.all.0.image_url}})"></div>
+            <div class="circular-logo" style="background-image:url({{fanfic.keyword_set.all.1.image_url}})"></div>
+            <div class="circular-logo" style="background-image:url({{fanfic.keyword_set.all.3.image_url}})"></div>
+    </div>
+    {% endfor %}
+</div>
+

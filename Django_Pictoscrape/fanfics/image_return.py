@@ -1,8 +1,7 @@
 import urllib2
 import simplejson
 import socket
-
-
+import re, string
 
 
 def queryFind(array):
@@ -16,7 +15,16 @@ def queryFind(array):
 #adds keywords in Google URL encoding
 
 def urlFind(keyword):
-	
+	keywords=keyword.split()
+	print keywords
+	if len(keywords)>1:
+		keyword = keywords[0]
+		for i in xrange(1,len(keywords)):
+			print keywords[i]
+			word=re.sub('[\W_]+', '', keywords[i])
+			print "word:",word
+			keyword+="%20"+word
+	print keyword
 	ip=socket.gethostbyname(socket.gethostname())
 	queryURL='https://ajax.googleapis.com/ajax/services/search/images?' + 'v=1.0&q='+keyword+'&userip='+ip
 	return queryURL
@@ -24,7 +32,6 @@ def urlFind(keyword):
 #finding the url to search by query = key1 + %20 + key2 ... and image Number
 
 def googlePrep(keyword):
-	
 	queryURL=urlFind(keyword)
 	request = urllib2.Request(queryURL, None, {'Referer': 'http://www.google.com'})
 	response = urllib2.urlopen(request)

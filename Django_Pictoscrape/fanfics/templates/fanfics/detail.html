@@ -79,9 +79,31 @@
 
 <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
 <link rel="stylesheet" type="text/css" href="{% static "stylesheet/main.css" %}">
+
+<style type="text/css" rel="stylesheet">
+
+    .circular-profile{
+    float:left;
+    width: 225px;
+    height: 225px;
+    margin-left: 100px;
+    margin-top:-10px;
+    border-radius: 200px;
+    -webkit-border-radius: 200px;
+    -moz-border-radius: 200px;
+    display:inline-block;
+    background-image: url({{fanfic.profile}});
+    background-repeat:no-repeat;
+    background-position: center;
+
+    background-size: cover;
+}
+</style>
   
 </head>
+<body>
 <div class= "jumbotron">
+    <div class="circular-profile"></div>
     <div class="container">
     <h1 class = "text-left"> {{fanfic.title}}</h1>
     <h2 class = "text-left"> {{fanfic.author}}</h2>
@@ -132,3 +154,4 @@
  -->
     </div>
 </div>
+</body>
