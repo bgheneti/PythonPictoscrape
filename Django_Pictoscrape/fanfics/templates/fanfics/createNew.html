@@ -1,8 +1,33 @@
-<H1>Create New</H1>
+<head>
+{% load staticfiles %}
 
+<link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "stylesheet/main.css" %}">
+</head>
+
+<div class= "jumbotron">
+    <div class="container">
+    <h1 class = "text-left logo">text &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp; FanFicPics</h1>
+    <div class = "navigator home">
+        <ul>
+        <li><a href="{% url 'fanfics:index' %}">go home</a></li>        
+        <li><a href="{% url 'fanfics:createURL' %}">scan url</a></li>
+        </ul>
+    </div>
+    </div>
+ </div>
+
+<div class="creator">
+<h1><strong>Enter your story!</strong></h1>
+<br>
+<br>
+<br>
 <form action="/fanfics/createNew" method="post">{% csrf_token %}
 {{ form.as_p }}
-<input type="submit" value="Submit" />
-</form>
+<br>
+<br>
+<input type="submit" value="get pic" class="btn btn-primary btn-lg"/>
 
+</form>
+</div>
 

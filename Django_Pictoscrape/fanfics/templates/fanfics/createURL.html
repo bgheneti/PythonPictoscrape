@@ -1,8 +1,34 @@
-<h1>Create from URL</h1>
+<head>
+{% load staticfiles %}
 
-<form action="/fanfics/createURL" method="post">{% csrf_token %}
+<link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "stylesheet/main.css" %}">
+</head>
+
+<div class= "jumbotron">
+    <div class="container">
+    <h1 class = "text-left logo">url &nbsp;<span class="glyphicon glyphicon-hand-right"></span>&nbsp; FanFicPics</h1>
+    <div class = "navigator home">
+        <ul>
+            <li><a href="{% url 'fanfics:index' %}">go home</a></li>
+        <li><a href="{% url 'fanfics:createNew' %}">scan text</a></li>
+        </ul>
+    </div>
+    </div>
+ </div>
+<br>
+<div class="creator">
+<h1><strong>F</strong>an<strong>F</strong>iction.net &nbsp; <strong>/</strong> &nbsp;<strong>A</strong>rchive<strong>O</strong>f<strong>O</strong>ur<strong>O</strong>wn.org&nbsp;&nbsp; <strong>url</strong></h1>
+<br>
+<br>
+<br>
+<form action="/fanfics/createURL" method="post">
+{% csrf_token %}
 {{ form.as_p }}
-<input type="submit" value="Submit" />
-</form>
+<br>
+<br>
+<input type="submit" value="get pic" class="btn btn-primary btn-lg"/>
 
+</form>
+</div>
 

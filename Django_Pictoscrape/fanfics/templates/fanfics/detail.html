@@ -75,79 +75,24 @@
 
 <!----NEW FORM-->
 <head>
-    <link href = "bootstrap.min.css" rel = "stylesheet" media = "screen">
-    <style media="screen" type="text/css">
+{% load staticfiles %}
 
-        #parentDiv
-        {
-            position:relative;
-            border-style:solid;
-            border-color: pink;
-            min-height:100%;
-            text-align: left-align;
-        }
-        #content
-        {
-            top:10%;
-            border-style:solid;
-            border-color: green;
-            text-align: left-align;
-        }
-        #text
-        {
-            width:60.5%;
-            height: 82%;
-            border-color: blue;
-            border-style:solid;
-        }
-        #sidebar
-        {   
-            position:absolute;
-            border-color: yellow;
-            top:0px;
-            right:0px;
-            bottom:0px;
-            width:39%;
-            background-color:gray;
-
-        }
-        .jumbotron
-        {
-            background-color: purple;
-            }
-        .jumbotron h1
-        {
-        color: white;
-        }
-        h2
-        {
-        color: white;
-        }
-        h3
-        {
-        color: white;
-        }
-        body{
-        background-color: pink;
-        color: purple;
-        }
-        h5{
-        color: white;
-        }
-        
-        
-        
-
-    </style>
+<link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "stylesheet/main.css" %}">
+  
 </head>
 <div class= "jumbotron">
     <div class="container">
     <h1 class = "text-left"> {{fanfic.title}}</h1>
     <h2 class = "text-left"> {{fanfic.author}}</h2>
-    <h3 class = "text-left"> a story from the FANFIC.FANDOM fandom</h3>
-    <h5 class = "text-left"> illustrations made with love by birdy, asmithh, and bgheneti</h4>
-    <p><a class="btn btn-primary btn-lg" role="button">Illustrate again!</a></p>
-    <img src="http://ladygeekgirl.files.wordpress.com/2012/01/funny-faces-d-lord-of-the-rings-25098153-1031-5192.jpg" class="img-circle">
+    <h3 class = "text-left"> a story from the {{fanfic.fandom}} fandom</h3>
+    <div class = "navigator">
+        <ul>
+        <li><a href="{% url 'fanfics:createNew' %}">copy link</a></li>
+        <li><a href="{% url 'fanfics:createURL' %}">make another</a></li>
+        <li><a href="{% url 'fanfics:index' %}">go home</a></li>
+        </ul>
+    </div>
     </div>
     
     </div>
@@ -155,18 +100,20 @@
     <div class = "row-fluid">
     <div class = leftbar>
         <div class = "col-md-6">
-            <p class = "text-center">{{fanfic.text}}</p>
+            <p class = "text-center post-text">{{fanfic.text}}</p>
         </div>
         </div>
         
         <div class = "col-md-6">
             <p class = "text-center">
-            <ul>
-                {% for kw in fanfic.keyword_set.all %}
-                    <img src="{{ kw.image_url }}">
-                    <li>{{ kw.key_word }}</li>
-                {% endfor %}
-            </ul>
+                <div id = "post-row">
+                    {% for kw in fanfic.keyword_set.all %}
+                    <div id = "post-img-container">
+                        <img src="{{ kw.image_url }}">
+                        <div class="caption">{{ kw.key_word }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
             </p>
         </div>
     </div>
