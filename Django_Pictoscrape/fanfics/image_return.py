@@ -26,7 +26,7 @@ def urlFind(keyword):
 			keyword+="%20"+word
 	print keyword
 	ip=socket.gethostbyname(socket.gethostname())
-	queryURL='https://ajax.googleapis.com/ajax/services/search/images?' + 'v=1.0&q='+keyword+'&userip='+ip+"&tbs=sur:f"
+	queryURL='https://ajax.googleapis.com/ajax/services/search/images?' + 'v=1.0&q='+keyword+'&userip='+ip+"&tbs=sur:fc"
 	return queryURL
 
 #finding the url to search by query = key1 + %20 + key2 ... and image Number

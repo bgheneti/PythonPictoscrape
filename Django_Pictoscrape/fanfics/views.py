@@ -34,7 +34,7 @@ def createNew(request):
     })
 
 def createURL(request):
-	latest_fanfic_list = FanFic.objects.all().order_by('-pub_date')[:10]
+	latest_fanfic_list = FanFic.objects.all().order_by('-pub_date')[:11]
 
 	if request.method == 'POST': 
 		form = CreateURLForm(request.POST)
