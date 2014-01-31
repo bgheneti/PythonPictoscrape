@@ -152,16 +152,16 @@ div.jumbotron .text-left{
 .latest{
     color: black;
     text-align: left;
-    padding-left: 150px;
+    padding-left: 50px;
 }
-.latest-pics-post a{
+.latest-fics-post a{
     font-size: 30px;
     color:rgb(74, 90, 155);
 }
 
-div.latest-pics{
+div.latest-fics{
     padding-top: 30px;
-    width:400px;
+    width:500px;
     font-size:45px;
     font-weight: bold;
     color: rgb(49, 73, 174);
@@ -172,15 +172,16 @@ div.latest-pics{
 
 
 .creator{
-    padding-top: 50px;
     margin:auto 0;
     text-align: center;
     padding-right: 150px;
 }
 .creator h1{
     font-size: 40px;
-    padding-left: 40px;
+    padding-left: 5px;
 }
+
+
 
 .btn{
     width:200px;
@@ -263,5 +264,10 @@ div.latest-pics{
 }
 
 
-
+.circular-url-logo-container{
+    max-height:200px;
+    margin:0 auto;
+    margin-top: 150px;
+    margin-left: 80px;
+}
 

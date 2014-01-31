@@ -20,9 +20,12 @@ def urlRead(website):
 
         if authority=='www.fanfiction.net':
                 subject = tree.xpath('//span[@class="lc-left"]/*[3]/text()')
+                if subject==[]:
+                        subject = tree.xpath('//span[@class="lc-left"]/a[@class="xcontrast_txt"]/text()')
                 storyOrig = tree.xpath('//div[@class="storytext xcontrast_txt nocopy"]/p/text()')
                 author = tree.xpath('//div[@id="profile_top"]/*[5]/text()')
-                #print author
+                if author==[]:
+                        author=tree.xpath('//div[@id="profile_top"]/*[4]/text()')
                 title = tree.xpath('//div[@id="profile_top"]/b/text()')
                 story=[]
                 summary=None
@@ -41,7 +44,6 @@ def urlRead(website):
                 story = " ".join(story)
 
                 dictionary = {'fandom':subject,'title':title,'author':author,'summary':summary,'text':story}
-
                 return dictionary
 
         if authority=='archiveofourown.org':
@@ -53,6 +55,8 @@ def urlRead(website):
                 #print subject
                 summaryOrig = tree.xpath('//blockquote[@class="userstuff"]/p/text()')
                 storyOrig = tree.xpath('//div[@role="article"]/p/text()')
+                if storyOrig==[]:
+                        storyOrig = tree.xpath('//div[@class="userstuff"]/p/text()')
                 author = tree.xpath('//a[@class="login author"]/text()')
                 title = tree.xpath('//h2[@class="title heading"]/text()')
 
@@ -77,7 +81,6 @@ def urlRead(website):
                 summary = " ".join(summary)
 
                 dictionary = {'fandom':subject,'title':title,'author':author,'summary':summary,'text':story}
-
                 return dictionary
 
         else:
@@ -96,3 +99,4 @@ def scrape(website):
                 return False
 
 #takes website URL and returns text array of keywork, summary and story
+

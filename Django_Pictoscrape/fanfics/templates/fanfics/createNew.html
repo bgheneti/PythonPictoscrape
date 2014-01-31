@@ -18,13 +18,10 @@
  </div>
 
 <div class="creator">
-<h1><strong>Enter your story!</strong></h1>
-<br>
-<br>
+<h1 "url-title"><strong>Enter your story!</strong></h1>
 <br>
 <form action="/fanfics/createNew" method="post">{% csrf_token %}
 {{ form.as_p }}
-<br>
 <br>
 <input type="submit" value="get pic" class="btn btn-primary btn-lg"/>
 

@@ -34,6 +34,8 @@ def createNew(request):
     })
 
 def createURL(request):
+	latest_fanfic_list = FanFic.objects.all().order_by('-pub_date')[:10]
+
 	if request.method == 'POST': 
 		form = CreateURLForm(request.POST)
 		if form.is_valid():
@@ -46,15 +48,9 @@ def createURL(request):
 			new_fanfic.fandom = d['fandom']
 			if d['text'] == '':
 				new_fanfic.text = d['summary']
-			else:
-				new_fanfic.text = d['text']
 			print "text of fanfic: " + new_fanfic.text
-			new_fanfic.save()
 			#alyssa's code -- getting keywords
 			kwlist = my_immortal_keyword_finder.getwords(new_fanfic.text)
-			if(kwlist==[]):
-				new_fanfic.text = d['summary']
-				kwlist = my_immortal_keyword_finder.getwords(new_fanfic.text)
 			try:
 				new_fanfic.profile=str(image_return.googlePrep(d['fandom']))
 			except:
@@ -73,6 +69,7 @@ def createURL(request):
 
 	return render(request, 'fanfics/createURL.html', {
         'form': form,
+        'latest_fanfic_list':latest_fanfic_list
     })
 
 def detail(request, fanfic_id):

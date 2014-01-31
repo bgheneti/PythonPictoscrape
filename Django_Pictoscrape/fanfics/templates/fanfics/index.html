@@ -21,11 +21,11 @@
 
 <div class = "col-md-4">
 <div class="latest">
-<div class="latest-pics">Latest Pics</div>
+<div class="latest-fics">Latest Fics</div>
 {% if latest_fanfic_list %}
 
     {% for fanfic in latest_fanfic_list %}
-        <div class="latest-pics-post"><a href="/fanfics/{{ fanfic.id }}/">{{ fanfic.title }}</a></div>
+        <div class="latest-fics-post"><a href="/fanfics/{{ fanfic.id }}/">{{ fanfic.title }}</a></div>
 
     {% endfor %}
 {% else %}
