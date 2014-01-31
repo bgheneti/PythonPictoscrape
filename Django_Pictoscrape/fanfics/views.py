@@ -42,17 +42,14 @@ def createURL(request):
 			d = scraper.scrape(form.cleaned_data['url'])
 			new_fanfic.title = d['title']
 			new_fanfic.author = d['author']
-<<<<<<< HEAD
 			new_fanfic.text = d['text']
 			new_fanfic.fandom = d['fandom']
-=======
 			if d['text'] == '':
 				new_fanfic.text = d['summary']
 			else:
 				new_fanfic.text = d['text']
 			print "text of fanfic: " + new_fanfic.text
 			new_fanfic.save()
->>>>>>> f7dc93bb35c88fbfef2c9a180e1cf895ebc9d04a
 			#alyssa's code -- getting keywords
 			kwlist = my_immortal_keyword_finder.getwords(new_fanfic.text)
 			if(kwlist==[]):
