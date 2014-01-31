@@ -287,10 +287,11 @@ hr {
     margin: 1em 0;
     padding: 0;
 }
-.footer{
-    float:right;
-    padding-top: 120px;
-    padding-bottom: 0px;
+.footer {
+float: right;
+padding-top: 120px;
+padding-left: 500px;
+padding-bottom: 0px;
 }
 
 .iframe{
